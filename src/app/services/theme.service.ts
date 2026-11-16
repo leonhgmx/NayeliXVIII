@@ -38,6 +38,7 @@ export interface OpcionColorTexto {
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   readonly paletas: readonly OpcionPaleta[] = [
+    { id: 'rojo', nombre: 'Rojo', clase: 'paleta-rojo', muestra: '#b91c1c' },
     { id: 'oceano', nombre: 'Océano', clase: 'paleta-oceano', muestra: '#2563eb' },
     { id: 'rosa', nombre: 'Rosa', clase: 'paleta-rosa', muestra: '#e11d48' },
     { id: 'esmeralda', nombre: 'Esmeralda', clase: 'paleta-esmeralda', muestra: '#059669' },
@@ -94,8 +95,8 @@ export class ThemeService {
     { id: 'vino', nombre: 'Vino', css: '#722f37' },
   ];
 
-  /** Valores por defecto: paleta Océano, fuente Parisienne, fondo Aurora. */
-  readonly paleta = signal<OpcionPaleta>(this.buscar(this.paletas, 'oceano'));
+  /** Valores por defecto: paleta Rojo, fuente Parisienne, fondo Aurora. */
+  readonly paleta = signal<OpcionPaleta>(this.buscar(this.paletas, 'rojo'));
   readonly fuente = signal<OpcionFuente>(this.buscar(this.fuentes, 'parisienne'));
   readonly fondo = signal<OpcionFondo>(this.buscar(this.fondos, 'aurora'));
   readonly fuenteNombres = signal<OpcionFuente>(this.buscar(this.fuentesNombres, 'dancing'));

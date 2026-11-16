@@ -56,7 +56,7 @@ const PASO_LETRA_MS = 70;
           [class.fecha-intro--visible]="intro.abriendo()"
         >
           <span class="h-px w-12 bg-acento-suave"></span>
-          <p class="font-serif text-xl tracking-wide text-blue-800">{{ fechaLegible }}</p>
+          <p class="font-serif text-xl tracking-wide text-acento-fuerte">{{ fechaLegible }}</p>
           <span class="h-px w-12 bg-acento-suave"></span>
         </div>
 

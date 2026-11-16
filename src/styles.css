@@ -79,7 +79,18 @@ body {
   @apply bg-white font-sans antialiased;
 }
 
-/* ---------- Paletas de color (10) ---------- */
+/* ---------- Paletas de color (11) ---------- */
+
+.paleta-rojo {
+  --tema-acento: #b91c1c;
+  --tema-acento-fuerte: #7f1d1d;
+  --tema-acento-suave: #f5b041;
+  --tema-acento-claro: #fde68a;
+  --tema-tinta: #2a1215;
+  --tema-tinta-suave: #6b4846;
+  --tema-neutro: #e8dcd8;
+  --tema-fondo: #fdf6f1;
+}
 
 .paleta-rosa {
   --tema-acento: #e11d48;
