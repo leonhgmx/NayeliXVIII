@@ -1,0 +1,479 @@
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@theme {
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-sound-wave: sound-wave 0.9s ease-in-out infinite;
+
+  @keyframes sound-wave {
+    0%,
+    100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  /* Doble latido (como un corazón) para llamar la atención sobre el play */
+  --animate-latido: latido 2.2s ease-in-out infinite;
+
+  @keyframes latido {
+    0%,
+    45%,
+    100% {
+      transform: scale(1);
+    }
+    12% {
+      transform: scale(1.14);
+    }
+    24% {
+      transform: scale(1);
+    }
+    34% {
+      transform: scale(1.14);
+    }
+  }
+
+  /* Anillo que se expande y desvanece detrás del botón */
+  --animate-halo: halo 2.2s ease-out infinite;
+
+  @keyframes halo {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    70%,
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+    }
+  }
+}
+
+/*
+ * Tokens semánticos del tema. Las utilidades (text-acento, bg-acento,
+ * border-neutro, font-script, ...) apuntan a variables CSS que cada clase
+ * de paleta/fuente (inyectada por ThemeService en el contenedor raíz)
+ * redefine. Así, agregar una paleta nueva = un bloque de variables.
+ */
+@theme inline {
+  --font-script: var(--fuente-titulo, "Great Vibes"), cursive;
+
+  --color-acento: var(--tema-acento);
+  --color-acento-fuerte: var(--tema-acento-fuerte);
+  --color-acento-suave: var(--tema-acento-suave);
+  --color-acento-claro: var(--tema-acento-claro);
+  --color-tinta: var(--tema-tinta);
+  --color-tinta-suave: var(--tema-tinta-suave);
+  --color-neutro: var(--tema-neutro);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans antialiased;
+}
+
+/* ---------- Paletas de color (10) ---------- */
+
+.paleta-rosa {
+  --tema-acento: #e11d48;
+  --tema-acento-fuerte: #be123c;
+  --tema-acento-suave: #fda4af;
+  --tema-acento-claro: #fecdd3;
+  --tema-tinta: #292524;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #fdf6f7;
+}
+
+.paleta-oceano {
+  --tema-acento: #2563eb;
+  --tema-acento-fuerte: #1d4ed8;
+  --tema-acento-suave: #93c5fd;
+  --tema-acento-claro: #bfdbfe;
+  --tema-tinta: #0f172a;
+  --tema-tinta-suave: #475569;
+  --tema-neutro: #e2e8f0;
+  --tema-fondo: #f8fafc;
+}
+
+.paleta-esmeralda {
+  --tema-acento: #059669;
+  --tema-acento-fuerte: #047857;
+  --tema-acento-suave: #6ee7b7;
+  --tema-acento-claro: #a7f3d0;
+  --tema-tinta: #292524;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #f2fbf7;
+}
+
+.paleta-lavanda {
+  --tema-acento: #7c3aed;
+  --tema-acento-fuerte: #6d28d9;
+  --tema-acento-suave: #c4b5fd;
+  --tema-acento-claro: #ddd6fe;
+  --tema-tinta: #0f172a;
+  --tema-tinta-suave: #475569;
+  --tema-neutro: #e2e8f0;
+  --tema-fondo: #f8f7fd;
+}
+
+.paleta-vino {
+  --tema-acento: #991b1b;
+  --tema-acento-fuerte: #7f1d1d;
+  --tema-acento-suave: #fca5a5;
+  --tema-acento-claro: #fecaca;
+  --tema-tinta: #292524;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #fcf7f5;
+}
+
+.paleta-dorado {
+  --tema-acento: #b45309;
+  --tema-acento-fuerte: #92400e;
+  --tema-acento-suave: #fcd34d;
+  --tema-acento-claro: #fde68a;
+  --tema-tinta: #292524;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #fdfaf1;
+}
+
+.paleta-coral {
+  --tema-acento: #ea580c;
+  --tema-acento-fuerte: #c2410c;
+  --tema-acento-suave: #fdba74;
+  --tema-acento-claro: #fed7aa;
+  --tema-tinta: #292524;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #fdf8f3;
+}
+
+.paleta-turquesa {
+  --tema-acento: #0d9488;
+  --tema-acento-fuerte: #0f766e;
+  --tema-acento-suave: #5eead4;
+  --tema-acento-claro: #99f6e4;
+  --tema-tinta: #0f172a;
+  --tema-tinta-suave: #475569;
+  --tema-neutro: #e2e8f0;
+  --tema-fondo: #f3fbfa;
+}
+
+.paleta-grafito {
+  --tema-acento: #44403c;
+  --tema-acento-fuerte: #292524;
+  --tema-acento-suave: #a8a29e;
+  --tema-acento-claro: #d6d3d1;
+  --tema-tinta: #1c1917;
+  --tema-tinta-suave: #57534e;
+  --tema-neutro: #e7e5e4;
+  --tema-fondo: #fafaf9;
+}
+
+.paleta-fucsia {
+  --tema-acento: #c026d3;
+  --tema-acento-fuerte: #a21caf;
+  --tema-acento-suave: #f0abfc;
+  --tema-acento-claro: #f5d0fe;
+  --tema-tinta: #0f172a;
+  --tema-tinta-suave: #475569;
+  --tema-neutro: #e2e8f0;
+  --tema-fondo: #fdf6fe;
+}
+
+/* ---------- Fuentes del título (10) ---------- */
+
+.fuente-great-vibes { --fuente-titulo: "Great Vibes"; }
+.fuente-dancing { --fuente-titulo: "Dancing Script"; }
+.fuente-parisienne { --fuente-titulo: "Parisienne"; }
+.fuente-allura { --fuente-titulo: "Allura"; }
+.fuente-sacramento { --fuente-titulo: "Sacramento"; }
+.fuente-tangerine { --fuente-titulo: "Tangerine"; }
+.fuente-alex-brush { --fuente-titulo: "Alex Brush"; }
+.fuente-pinyon { --fuente-titulo: "Pinyon Script"; }
+.fuente-italianno { --fuente-titulo: "Italianno"; }
+.fuente-playfair { --fuente-titulo: "Playfair Display"; }
+
+/* ---------- Fondos de página (6) ---------- */
+
+.fondo-claro {
+  background-color: var(--tema-fondo);
+}
+
+.fondo-blanco {
+  background-color: #ffffff;
+}
+
+.fondo-marfil {
+  background-color: #faf6ee;
+}
+
+.fondo-degradado {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--tema-acento-claro) 55%, white),
+    var(--tema-fondo) 45%
+  );
+}
+
+.fondo-puntos {
+  background-color: var(--tema-fondo);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--tema-acento) 16%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+}
+
+.fondo-lineas {
+  background-color: var(--tema-fondo);
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--tema-acento) 5%, transparent) 0 2px,
+    transparent 2px 16px
+  );
+}
+
+/* Fondos coloridos: los tres primeros se tiñen con la paleta activa */
+
+.fondo-pastel {
+  background-color: color-mix(in srgb, var(--tema-acento) 12%, white);
+}
+
+.fondo-intenso {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--tema-acento) 32%, white),
+    color-mix(in srgb, var(--tema-acento-suave) 55%, white) 50%,
+    color-mix(in srgb, var(--tema-acento) 18%, white)
+  );
+}
+
+.fondo-aurora {
+  background-color: var(--tema-fondo);
+  background-image:
+    radial-gradient(
+      60% 40% at 12% 5%,
+      color-mix(in srgb, var(--tema-acento-suave) 60%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 35% at 88% 35%,
+      color-mix(in srgb, var(--tema-acento-claro) 75%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 35% at 45% 98%,
+      color-mix(in srgb, var(--tema-acento) 24%, transparent),
+      transparent 70%
+    );
+}
+
+.fondo-amanecer {
+  background: linear-gradient(180deg, #fbdfe3, #fdf1d3 45%, #d9edfd);
+}
+
+.fondo-algodon {
+  background-color: #fdf9ff;
+  background-image:
+    radial-gradient(45% 35% at 15% 10%, #f9c7e0, transparent 70%),
+    radial-gradient(50% 30% at 85% 25%, #bcd9fc, transparent 70%),
+    radial-gradient(45% 30% at 25% 60%, #d8cffb, transparent 70%),
+    radial-gradient(50% 35% at 80% 90%, #f9d8c2, transparent 70%);
+}
+
+/* Animación de entrada: la directiva RevealOnScroll agrega .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Portones de bienvenida: IntroGateComponent los desliza a los lados al cargar */
+.puerta-hoja {
+  transition: transform 3.2s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+  transform: scaleY(1.6);
+  backface-visibility: hidden;
+}
+
+.puerta-hoja--izquierda {
+  transform-origin: left center;
+}
+
+.puerta-hoja--derecha {
+  transform-origin: right center;
+}
+
+.puerta-hoja--abierta-izquierda {
+  transform: scaleY(1.6) rotateY(-100deg);
+}
+
+.puerta-hoja--abierta-derecha {
+  transform: scaleY(1.6) rotateY(100deg);
+}
+
+/* Revelado del hero, sincronizado con IntroService/IntroGateComponent */
+.letra-intro {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(14px);
+  transition:
+    opacity 0.7s ease-out,
+    filter 0.7s ease-out;
+}
+
+.letra-intro--visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.nombre-intro {
+  opacity: 0;
+  filter: blur(18px);
+  transition:
+    opacity 1.6s ease-out,
+    filter 1.6s ease-out;
+  transition-delay: 0.8s;
+}
+
+.nombre-intro--visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.figura-intro {
+  opacity: 0;
+  filter: blur(18px);
+  transition:
+    opacity 1.6s ease-out,
+    filter 1.6s ease-out;
+  transition-delay: 0.8s;
+}
+
+.figura-intro--visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.fecha-intro,
+.frase-intro {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+}
+
+.fecha-intro {
+  transition-delay: 1.6s;
+}
+
+.frase-intro {
+  transition-delay: 1.9s;
+}
+
+.fecha-intro--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.frase-intro--visible {
+  opacity: 1;
+  /* Un poco más arriba que translateY(0) para no quedar tapada por una hoja del marco inferior */
+  transform: translateY(-14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letra-intro,
+  .nombre-intro,
+  .figura-intro,
+  .fecha-intro,
+  .frase-intro {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mariposa decorativa: ButterflyComponent le asigna un nuevo punto al azar */
+.mariposa {
+  transition:
+    left var(--vuelo-duracion, 4s) ease-in-out,
+    top var(--vuelo-duracion, 4s) ease-in-out,
+    transform var(--vuelo-duracion, 4s) ease-in-out;
+  will-change: left, top, transform;
+}
+
+.mariposa-aleteo {
+  transform-origin: center;
+  animation: aleteo 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes aleteo {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.7);
+  }
+}
+
+/* Marco floral superior: se recorta a la mitad y sube un 20% más al hacer scroll (FlowerFrameComponent) */
+.marco-superior {
+  transition:
+    max-height 1s ease-out,
+    object-position 1s ease-out,
+    transform 1s ease-out;
+}
+
+.marco-superior--recortado {
+  max-height: 14.4svh;
+  object-position: bottom;
+  transform: translateY(-20%);
+}
+
+/* Marco floral inferior: espejo del superior, se recorta hacia el centro al hacer scroll */
+.marco-inferior {
+  transition:
+    max-height 1s ease-out,
+    object-position 1s ease-out;
+}
+
+.marco-inferior--recortado {
+  max-height: 14.4svh;
+  object-position: top;
+}
+
+/* Halo doble detrás de "Mis XVIII Años" para que se distinga sobre la imagen de fondo */
+.etiqueta-fondo-doble {
+  text-shadow:
+    0 1px 4px rgba(255, 255, 255, 0.85),
+    0 2px 14px rgba(255, 255, 255, 0.6);
+}
