@@ -5,7 +5,6 @@
  */
 
 export interface Ubicacion {
-  readonly nombre: string;
   readonly hora: string;
   readonly direccion: string;
   readonly mapsUrl: string;
@@ -48,7 +47,6 @@ export const INVITATION_CONFIG: InvitationConfig = {
     codigo: '60085650',
   },
   ubicacion: {
-    nombre: 'Salón de Fiestas',
     hora: '16:30 hrs',
     direccion: 'Río Satevo 75, Paseos de Churubusco, Iztapalapa, 09030 Ciudad de México, CDMX',
     mapsUrl: 'https://maps.app.goo.gl/QoQsqyrJR5oyVEa48',
