@@ -7,48 +7,22 @@ import { INVITATION_CONFIG } from '../invitation-config';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div
-      class="mx-auto max-w-md rounded-3xl border border-white/60 bg-white/50 p-8 text-center shadow-xl shadow-neutro/50 backdrop-blur-md"
-    >
-      <i class="pi pi-gift mb-4 text-4xl text-acento" aria-hidden="true"></i>
-
-      <h3 class="font-serif text-2xl text-tinta">Mesa de Regalos</h3>
-      <p class="mt-2 text-sm font-light text-tinta-suave">
-        Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo, contamos con mesa
-        de regalos en <span class="font-medium">{{ regalos.tienda }}</span>.
-      </p>
-
-      <!-- Código del evento con copiado rápido -->
-      <div
-        class="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-neutro bg-white/60 px-5 py-3"
+    <div class="flex flex-col items-center gap-2.5">
+      <i class="pi pi-gift text-2xl text-acento" aria-hidden="true"></i>
+      <h3 class="text-[11px] font-semibold tracking-[0.25em] text-tinta uppercase">Mesa de regalos</h3>
+      <button
+        type="button"
+        (click)="copiarCodigo()"
+        aria-label="Copiar número de evento"
+        class="pildora cursor-pointer"
       >
-        <div class="text-left">
-          <p class="text-[10px] font-light tracking-widest text-tinta-suave uppercase">
-            Número de evento
-          </p>
-          <p class="font-serif text-xl font-semibold tracking-wider text-tinta tabular-nums">
-            {{ regalos.codigo }}
-          </p>
-        </div>
-        <button
-          type="button"
-          (click)="copiarCodigo()"
-          aria-label="Copiar número de evento"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-acento text-white shadow-lg shadow-acento-claro transition-all duration-300 hover:bg-acento-fuerte active:scale-95"
-        >
-          <i class="pi pi-copy" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <a
-        [href]="regalos.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-acento-suave bg-white/60 px-6 py-3 text-sm font-medium text-acento transition-all duration-300 hover:bg-acento hover:text-white"
-      >
-        <i class="pi pi-external-link" aria-hidden="true"></i>
-        Ver mesa de regalos
-      </a>
+        <span class="block font-serif text-sm font-bold tracking-wide text-tinta uppercase sm:text-base">
+          {{ regalos.tienda }}
+        </span>
+        <span class="block text-xs text-tinta-suave italic sm:text-sm">
+          Número de evento: {{ regalos.codigo }}
+        </span>
+      </button>
     </div>
   `,
 })

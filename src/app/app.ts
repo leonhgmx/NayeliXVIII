@@ -5,8 +5,6 @@ import { ButterflyFlockComponent } from './components/butterfly-flock.component'
 import { FlowerFrameComponent } from './components/flower-frame.component';
 import { HeroComponent } from './components/hero.component';
 import { AudioPlayerComponent } from './components/audio-player.component';
-import { CountdownComponent } from './components/countdown.component';
-import { FamilyComponent } from './components/family.component';
 import { LocationsComponent } from './components/locations.component';
 import { DressCodeComponent } from './components/dress-code.component';
 import { GiftsComponent } from './components/gifts.component';
@@ -24,8 +22,6 @@ import { INVITATION_CONFIG } from './invitation-config';
     FlowerFrameComponent,
     HeroComponent,
     AudioPlayerComponent,
-    CountdownComponent,
-    FamilyComponent,
     LocationsComponent,
     DressCodeComponent,
     GiftsComponent,

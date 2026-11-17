@@ -9,36 +9,18 @@ export interface Ubicacion {
   readonly hora: string;
   readonly direccion: string;
   readonly mapsUrl: string;
-  /** Imagen del lugar, colocada en src/assets/img/ */
-  readonly imagenUrl: string;
-}
-
-export interface GrupoFamiliar {
-  readonly titulo: string;
-  readonly nombres: readonly string[];
-}
-
-export interface Familia {
-  readonly grupos: readonly GrupoFamiliar[];
-  /** Frase que cierra la sección familiar. */
-  readonly fraseCierre: string;
 }
 
 export interface MesaRegalos {
   readonly tienda: string;
   readonly codigo: string;
-  readonly url: string;
 }
 
 export interface CodigoVestimenta {
   readonly titulo: string;
   readonly advertencia: string;
-  /** Colores sugeridos para invitados (clases hex para las muestras visuales). */
-  readonly paletaSugerida: readonly { nombre: string; hex: string }[];
   /** Color reservado para la festejada. */
   readonly colorReservado: { nombre: string; hex: string };
-  /** Imagen ilustrativa del código de vestimenta, en src/assets/img/ */
-  readonly imagenUrl: string;
 }
 
 export interface InvitationConfig {
@@ -48,80 +30,33 @@ export interface InvitationConfig {
   /** Lada / código de país para los enlaces de WhatsApp (México = 52). */
   readonly codigoPaisWhatsapp: string;
   readonly whatsappConfirmacion: string;
-  readonly whatsappFelicitaciones: string;
-  readonly familia: Familia;
   readonly mesaRegalos: MesaRegalos;
-  readonly pasesMaximosPorInvitado: number;
-  /**
-   * Si es false, el formulario de confirmación no pide número de lugares
-   * (y el mensaje de WhatsApp lo omite). Para restringir pases más adelante:
-   * poner en true y ajustar pasesMaximosPorInvitado.
-   */
-  readonly permitirSeleccionPases: boolean;
-  readonly ubicaciones: {
-    readonly misa: Ubicacion;
-    readonly recepcion: Ubicacion;
-  };
+  readonly ubicacion: Ubicacion;
   readonly codigoVestimenta: CodigoVestimenta;
-  /** Rutas servidas por la app (src/assets/... o public/) */
+  /** Ruta servida por la app (src/assets/...) */
   readonly musicaUrl: string;
-  readonly heroImagenUrl: string;
 }
 
 export const INVITATION_CONFIG: InvitationConfig = {
   nombreFestejada: 'Nayeli',
-  fraseBienvenida: '¡Acompáñanos a celebrar!',
-  fechaEvento: new Date('2026-08-08T18:45:00'),
+  fraseBienvenida: 'Tenemos el honor de invitarlos a la celebración de',
+  fechaEvento: new Date('2026-11-28T16:30:00'),
   codigoPaisWhatsapp: '52',
   whatsappConfirmacion: '5532420009',
-  whatsappFelicitaciones: '5532420009',
-  familia: {
-    grupos: [
-      { titulo: 'Mis padres', nombres: ['Alma Jiménez', 'Gume León'] },
-      { titulo: 'Mis padrinos', nombres: ['Blanca Jiménez', 'Gustavo Novas'] },
-    ],
-    fraseCierre: 'Acompáñanos a celebrar.',
-  },
   mesaRegalos: {
     tienda: 'Liverpool',
-    codigo: '51902017',
-    url: 'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51902017',
+    codigo: '60085650',
   },
-  pasesMaximosPorInvitado: 6,
-  permitirSeleccionPases: false,
-  ubicaciones: {
-    misa: {
-      nombre: 'Parroquia Nuestra Señora Aparecida del Brasil',
-      hora: '18:45 hrs',
-      direccion:
-        'Francisco del Paso Y Troncoso 307, Jardín Balbuena, Venustiano Carranza, 15900 CDMX',
-      mapsUrl:
-        'https://www.google.com/maps/search/?api=1&query=Parroquia+Nuestra+Se%C3%B1ora+Aparecida+del+Brasil%2C+Francisco+del+Paso+y+Troncoso+307%2C+Jard%C3%ADn+Balbuena%2C+CDMX',
-      imagenUrl: 'assets/img/CeremoniaReligiosa.jpg',
-    },
-    recepcion: {
-      nombre: 'Salón de Fiestas Portofino',
-      hora: '20:00 hrs',
-      direccion: 'Calle Ote. 172 Número 21, Moctezuma 2da Secc, Venustiano Carranza, 15530 Ciudad de México, CDMX',
-      mapsUrl:
-        'https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+Portofino%2C+Calle+Ote.+172+21%2C+Moctezuma+2da+Secc%2C+Venustiano+Carranza%2C+CDMX',
-      imagenUrl: 'assets/img/Recepcion.png',
-    },
+  ubicacion: {
+    nombre: 'Salón de Fiestas',
+    hora: '16:30 hrs',
+    direccion: 'Río Satevo 75, Paseos de Churubusco, Iztapalapa, 09030 Ciudad de México, CDMX',
+    mapsUrl: 'https://maps.app.goo.gl/QoQsqyrJR5oyVEa48',
   },
   codigoVestimenta: {
     titulo: 'Formal',
-    advertencia: 'El color Azul en todas sus tonalidades está reservado exclusivamente para la festejada',
-    paletaSugerida: [
-      { nombre: 'Marfil', hex: '#f5f0e8' },
-      { nombre: 'Piedra', hex: '#a8a29e' },
-      { nombre: 'Vino', hex: '#722f37' },
-      { nombre: 'Esmeralda', hex: '#0f6b4f' },
-      { nombre: 'Grafito', hex: '#44403c' },
-      { nombre: 'Lavanda', hex: '#b8a9c9' },
-    ],
-    colorReservado: { nombre: 'Azul', hex: '#1e40af' },
-    imagenUrl: 'assets/img/CodigoVestimenta.png',
+    advertencia: 'Se reserva el color rojo',
+    colorReservado: { nombre: 'Rojo', hex: '#b91c1c' },
   },
   musicaUrl: 'assets/sounds/BirdsOfFeatherLoop.mp3',
-  heroImagenUrl: 'hero.jpg',
 };

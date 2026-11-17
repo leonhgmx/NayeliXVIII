@@ -8,51 +8,16 @@
 
   <app-hero />
 
-  <main id="contenido" class="mx-auto flex max-w-3xl flex-col gap-20 px-6 py-20">
-    <!-- Contador regresivo -->
-    <section appReveal aria-labelledby="titulo-contador">
-      <h2 id="titulo-contador" class="mb-8 text-center font-script text-5xl text-acento">
-        Falta muy poco
-      </h2>
-      <app-countdown />
-    </section>
-
-    <!-- Padres y padrinos -->
-    <section appReveal aria-label="Mi familia">
-      <app-family />
-    </section>
-
-    <!-- Ubicaciones -->
-    <section appReveal aria-labelledby="titulo-ubicaciones">
-      <h2 id="titulo-ubicaciones" class="mb-8 text-center font-script text-5xl text-acento">
-        Los esperamos en:
-      </h2>
+  <main id="contenido" class="mx-auto flex max-w-md flex-col items-center px-6 pb-20">
+    <div
+      appReveal
+      class="grid w-full grid-cols-2 gap-x-4 gap-y-8 rounded-3xl border border-white/60 bg-white/50 p-6 shadow-xl shadow-neutro/50 backdrop-blur-md sm:gap-x-6 sm:p-8"
+    >
       <app-locations />
-    </section>
-
-    <!-- Código de vestimenta -->
-    <section appReveal aria-labelledby="titulo-vestimenta">
-      <h2 id="titulo-vestimenta" class="mb-8 text-center font-script text-5xl text-acento">
-        Código de vestimenta
-      </h2>
-      <app-dress-code />
-    </section>
-
-    <!-- Mesa de regalos -->
-    <section appReveal aria-labelledby="titulo-regalos">
-      <h2 id="titulo-regalos" class="mb-8 text-center font-script text-5xl text-acento">
-        Mesa de regalos
-      </h2>
-      <app-gifts />
-    </section>
-
-    <!-- Confirmación de asistencia -->
-    <section appReveal aria-labelledby="titulo-rsvp">
-      <h2 id="titulo-rsvp" class="mb-8 text-center font-script text-5xl text-acento">
-        ¿Contamos contigo?
-      </h2>
       <app-rsvp />
-    </section>
+      <app-dress-code />
+      <app-gifts />
+    </div>
   </main>
 
   <footer class="pb-24 text-center">

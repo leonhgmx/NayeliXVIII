@@ -69,6 +69,8 @@
   --color-tinta: var(--tema-tinta);
   --color-tinta-suave: var(--tema-tinta-suave);
   --color-neutro: var(--tema-neutro);
+  /* Dorado fijo (no cambia con la paleta activa): corona y detalles metálicos. */
+  --color-dorado: #caa43d;
 }
 
 html {
@@ -350,20 +352,6 @@ body {
 }
 
 /* Revelado del hero, sincronizado con IntroService/IntroGateComponent */
-.letra-intro {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(14px);
-  transition:
-    opacity 0.7s ease-out,
-    filter 0.7s ease-out;
-}
-
-.letra-intro--visible {
-  opacity: 1;
-  filter: blur(0);
-}
-
 .nombre-intro {
   opacity: 0;
   filter: blur(18px);
@@ -378,35 +366,13 @@ body {
   filter: blur(0);
 }
 
-.figura-intro {
-  opacity: 0;
-  filter: blur(18px);
-  transition:
-    opacity 1.6s ease-out,
-    filter 1.6s ease-out;
-  transition-delay: 0.8s;
-}
-
-.figura-intro--visible {
-  opacity: 1;
-  filter: blur(0);
-}
-
-.fecha-intro,
-.frase-intro {
+.fecha-intro {
   opacity: 0;
   transform: translateY(28px);
   transition:
     opacity 1s ease-out,
     transform 1s ease-out;
-}
-
-.fecha-intro {
   transition-delay: 1.6s;
-}
-
-.frase-intro {
-  transition-delay: 1.9s;
 }
 
 .fecha-intro--visible {
@@ -414,18 +380,9 @@ body {
   transform: translateY(0);
 }
 
-.frase-intro--visible {
-  opacity: 1;
-  /* Un poco más arriba que translateY(0) para no quedar tapada por una hoja del marco inferior */
-  transform: translateY(-14px);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .letra-intro,
   .nombre-intro,
-  .figura-intro,
-  .fecha-intro,
-  .frase-intro {
+  .fecha-intro {
     opacity: 1;
     filter: none;
     transform: none;
@@ -482,9 +439,67 @@ body {
   object-position: top;
 }
 
-/* Halo doble detrás de "Mis XVIII Años" para que se distinga sobre la imagen de fondo */
-.etiqueta-fondo-doble {
-  text-shadow:
-    0 1px 4px rgba(255, 255, 255, 0.85),
-    0 2px 14px rgba(255, 255, 255, 0.6);
+/* Revelado del saludo inicial del hero ("Tenemos el honor de invitarlos...") */
+.saludo-intro {
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+  transition-delay: 0.3s;
+}
+
+.saludo-intro--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Revelado de "Sweet 18", justo debajo del nombre */
+.subtitulo-intro {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+  transition-delay: 1.2s;
+}
+
+.subtitulo-intro--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saludo-intro,
+  .subtitulo-intro {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Tarjeta tipo píldora: ícono + etiqueta + botón redondeado con dos líneas de texto */
+.pildora {
+  display: block;
+  width: 100%;
+  border-radius: 9999px;
+  border-width: 1.5px;
+  border-color: var(--tema-acento-suave);
+  background-color: color-mix(in srgb, white 70%, transparent);
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+  transition:
+    border-color 0.3s ease-out,
+    box-shadow 0.3s ease-out,
+    transform 0.2s ease-out;
+}
+
+a.pildora:hover,
+button.pildora:hover {
+  border-color: var(--tema-acento);
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--tema-acento) 45%, transparent);
+}
+
+button.pildora:active {
+  transform: scale(0.97);
 }
