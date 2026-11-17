@@ -9,7 +9,6 @@ import { LocationsComponent } from './components/locations.component';
 import { DressCodeComponent } from './components/dress-code.component';
 import { GiftsComponent } from './components/gifts.component';
 import { RsvpComponent } from './components/rsvp.component';
-import { RevealOnScrollDirective } from './directives/reveal-on-scroll.directive';
 import { ThemeService } from './services/theme.service';
 import { INVITATION_CONFIG } from './invitation-config';
 
@@ -26,7 +25,6 @@ import { INVITATION_CONFIG } from './invitation-config';
     DressCodeComponent,
     GiftsComponent,
     RsvpComponent,
-    RevealOnScrollDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',

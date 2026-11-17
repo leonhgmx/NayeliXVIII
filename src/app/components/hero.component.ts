@@ -15,7 +15,7 @@ import { IntroService } from '../services/intro.service';
         <!-- Corona dorada -->
         <svg
           viewBox="0 0 64 48"
-          class="h-10 w-10 text-dorado drop-shadow-sm"
+          class="h-10 w-10 text-acento-fuerte drop-shadow-sm"
           fill="currentColor"
           aria-hidden="true"
         >
@@ -65,7 +65,7 @@ import { IntroService } from '../services/intro.service';
           [class.subtitulo-intro--visible]="intro.abriendo()"
         >
           Sweet 18
-          <svg viewBox="0 0 64 48" class="h-6 w-6 text-dorado" fill="currentColor" aria-hidden="true">
+          <svg viewBox="0 0 64 48" class="h-6 w-6 text-acento-fuerte" fill="currentColor" aria-hidden="true">
             <path
               d="M4 18 L16 30 L28 10 L32 6 L36 10 L48 30 L60 18 L54 42 L10 42 Z"
               stroke="currentColor"

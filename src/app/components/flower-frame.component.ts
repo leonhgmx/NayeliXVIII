@@ -1,13 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { IntroService } from '../services/intro.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-/**
- * Marco floral fijo (arriba y abajo) que permanece en pantalla aunque el
- * usuario haga scroll, en vez de desplazarse junto con el hero. Al hacer
- * scroll, ambos marcos se recortan a la mitad hacia el centro (arriba pierde
- * su mitad superior, abajo pierde su mitad inferior) y recuperan su tamaño
- * completo al regresar arriba.
- */
+/** Marco floral fijo (arriba y abajo), sin reaccionar al scroll. */
 @Component({
   selector: 'app-flower-frame',
   standalone: true,
@@ -17,18 +10,14 @@ import { IntroService } from '../services/intro.service';
       src="assets/img/FondoSuperiorBlanco.png"
       alt=""
       aria-hidden="true"
-      class="marco-superior pointer-events-none fixed inset-x-0 top-0 z-30 max-h-[28.8svh] w-full select-none object-cover object-top [mask-image:linear-gradient(to_bottom,black_65%,transparent)]"
-      [class.marco-superior--recortado]="intro.desplazado()"
+      class="pointer-events-none fixed inset-x-0 top-0 z-30 max-h-[28.8svh] w-full select-none object-cover object-top [mask-image:linear-gradient(to_bottom,black_65%,transparent)]"
     />
     <img
       src="assets/img/FondoInferiorBlanco.png"
       alt=""
       aria-hidden="true"
-      class="marco-inferior pointer-events-none fixed inset-x-0 bottom-0 z-30 max-h-[28.8svh] w-full select-none object-cover object-bottom [mask-image:linear-gradient(to_top,black_65%,transparent)]"
-      [class.marco-inferior--recortado]="intro.desplazado()"
+      class="pointer-events-none fixed inset-x-0 bottom-0 z-30 max-h-[28.8svh] w-full select-none object-cover object-bottom [mask-image:linear-gradient(to_top,black_65%,transparent)]"
     />
   `,
 })
-export class FlowerFrameComponent {
-  protected readonly intro = inject(IntroService);
-}
+export class FlowerFrameComponent {}

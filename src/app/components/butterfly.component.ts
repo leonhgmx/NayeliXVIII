@@ -14,9 +14,7 @@ export interface PosicionMariposa {
  * Una mariposa: empieza posada en `posicionInicial` (sobre las flores del
  * marco inferior) y, en cuanto IntroService marca que los portones se están
  * abriendo, si `saleVolando` es true se va volando fuera de pantalla y
- * desaparece; si no, se queda vagando al azar por la página hasta que el
- * usuario hace scroll (IntroService.desplazado), momento en el que también
- * sale volando y desaparece.
+ * desaparece; si no, se queda vagando al azar por la página indefinidamente.
  */
 @Component({
   selector: 'app-butterfly',
@@ -63,11 +61,10 @@ export class ButterflyComponent implements OnInit, OnDestroy {
   constructor() {
     effect(() => {
       const abriendo = this.intro.abriendo();
-      const desplazado = this.intro.desplazado();
 
       if (!abriendo || this.yaVolando) return;
 
-      const debeSalir = this.saleVolando || desplazado;
+      const debeSalir = this.saleVolando;
 
       if (this.reduccionMovimiento) {
         if (debeSalir) {
