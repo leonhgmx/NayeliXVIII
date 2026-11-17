@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
-import { IntroGateComponent } from './components/intro-gate.component';
-import { ButterflyFlockComponent } from './components/butterfly-flock.component';
-import { FlowerFrameComponent } from './components/flower-frame.component';
 import { HeroComponent } from './components/hero.component';
 import { AudioPlayerComponent } from './components/audio-player.component';
 import { LocationsComponent } from './components/locations.component';
@@ -16,9 +13,6 @@ import { INVITATION_CONFIG } from './invitation-config';
   selector: 'app-root',
   imports: [
     ToastModule,
-    IntroGateComponent,
-    ButterflyFlockComponent,
-    FlowerFrameComponent,
     HeroComponent,
     AudioPlayerComponent,
     LocationsComponent,

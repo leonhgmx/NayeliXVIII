@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { INVITATION_CONFIG } from '../invitation-config';
-import { IntroService } from '../services/intro.service';
 
 @Component({
   selector: 'app-hero',
@@ -12,7 +11,7 @@ import { IntroService } from '../services/intro.service';
       <div class="absolute inset-0 bg-gradient-to-b from-acento-claro/50 via-transparent to-transparent"></div>
 
       <div class="relative flex max-w-sm flex-col items-center gap-5">
-        <!-- Corona dorada -->
+        <!-- Corona -->
         <svg
           viewBox="0 0 64 48"
           class="h-10 w-10 text-acento-fuerte drop-shadow-sm"
@@ -32,22 +31,16 @@ import { IntroService } from '../services/intro.service';
           <circle cx="60" cy="14" r="4" />
         </svg>
 
-        <p
-          class="saludo-intro max-w-xs font-serif text-base tracking-wide text-acento-fuerte sm:text-lg"
-          [class.saludo-intro--visible]="intro.abriendo()"
-        >
+        <p class="max-w-xs font-serif text-base tracking-wide text-acento-fuerte sm:text-lg">
           {{ config.fraseBienvenida }}
         </p>
 
-        <div
-          class="nombre-intro flex items-center gap-4 sm:gap-7"
-          [class.nombre-intro--visible]="intro.abriendo()"
-        >
+        <div class="flex items-center gap-4 sm:gap-7">
           <img
             src="assets/img/Butterfly.png"
             alt=""
             aria-hidden="true"
-            class="h-10 w-10 shrink-0 -scale-x-100 select-none drop-shadow-sm sm:h-14 sm:w-14"
+            class="mariposa-roja h-10 w-10 shrink-0 -scale-x-100 select-none drop-shadow-sm sm:h-14 sm:w-14"
           />
           <h1 class="font-serif text-7xl leading-none font-bold sm:text-8xl md:text-9xl">
             <span class="text-acento-fuerte">{{ primeraLetra }}</span><span class="text-acento">{{ restoNombre }}</span>
@@ -56,14 +49,11 @@ import { IntroService } from '../services/intro.service';
             src="assets/img/Butterfly.png"
             alt=""
             aria-hidden="true"
-            class="h-10 w-10 shrink-0 select-none drop-shadow-sm sm:h-14 sm:w-14"
+            class="mariposa-roja h-10 w-10 shrink-0 select-none drop-shadow-sm sm:h-14 sm:w-14"
           />
         </div>
 
-        <p
-          class="subtitulo-intro flex items-center gap-2 font-script text-5xl text-acento sm:text-6xl"
-          [class.subtitulo-intro--visible]="intro.abriendo()"
-        >
+        <p class="flex items-center gap-2 font-script text-5xl text-acento sm:text-6xl">
           Sweet 18
           <svg viewBox="0 0 64 48" class="h-6 w-6 text-acento-fuerte" fill="currentColor" aria-hidden="true">
             <path
@@ -80,10 +70,7 @@ import { IntroService } from '../services/intro.service';
           </svg>
         </p>
 
-        <div
-          class="fecha-intro mt-2 grid grid-cols-3 items-start gap-1 sm:gap-6"
-          [class.fecha-intro--visible]="intro.abriendo()"
-        >
+        <div class="mt-2 grid grid-cols-3 items-start gap-1 sm:gap-6">
           <div class="flex flex-col items-center gap-1 border-r border-acento-claro pr-2 sm:pr-6">
             <span class="text-[10px] font-medium tracking-[0.25em] text-acento-fuerte uppercase sm:text-xs">
               {{ mesTexto }}
@@ -108,7 +95,7 @@ import { IntroService } from '../services/intro.service';
       <a
         href="#contenido"
         aria-label="Ver la invitación"
-        class="absolute bottom-8 flex h-12 w-12 animate-bounce items-center justify-center rounded-full border border-white/60 bg-white/50 text-acento shadow-xl shadow-neutro/50 backdrop-blur-md transition-colors duration-300 hover:bg-acento hover:text-white"
+        class="absolute bottom-8 flex h-12 w-12 items-center justify-center rounded-full border border-white/60 bg-white/50 text-acento shadow-xl shadow-neutro/50 backdrop-blur-md"
       >
         <i class="pi pi-angle-down text-xl" aria-hidden="true"></i>
       </a>
@@ -117,7 +104,6 @@ import { IntroService } from '../services/intro.service';
 })
 export class HeroComponent {
   protected readonly config = INVITATION_CONFIG;
-  protected readonly intro = inject(IntroService);
 
   protected readonly primeraLetra = this.config.nombreFestejada.charAt(0);
   protected readonly restoNombre = this.config.nombreFestejada.slice(1);

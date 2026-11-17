@@ -4,53 +4,6 @@
 @theme {
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
-
-  --animate-sound-wave: sound-wave 0.9s ease-in-out infinite;
-
-  @keyframes sound-wave {
-    0%,
-    100% {
-      transform: scaleY(0.3);
-    }
-    50% {
-      transform: scaleY(1);
-    }
-  }
-
-  /* Doble latido (como un corazón) para llamar la atención sobre el play */
-  --animate-latido: latido 2.2s ease-in-out infinite;
-
-  @keyframes latido {
-    0%,
-    45%,
-    100% {
-      transform: scale(1);
-    }
-    12% {
-      transform: scale(1.14);
-    }
-    24% {
-      transform: scale(1);
-    }
-    34% {
-      transform: scale(1.14);
-    }
-  }
-
-  /* Anillo que se expande y desvanece detrás del botón */
-  --animate-halo: halo 2.2s ease-out infinite;
-
-  @keyframes halo {
-    0% {
-      transform: scale(1);
-      opacity: 0.55;
-    }
-    70%,
-    100% {
-      transform: scale(1.9);
-      opacity: 0;
-    }
-  }
 }
 
 /*
@@ -84,8 +37,8 @@ body {
 .paleta-rojo {
   --tema-acento: #b91c1c;
   --tema-acento-fuerte: #7f1d1d;
-  --tema-acento-suave: #f5b041;
-  --tema-acento-claro: #fde68a;
+  --tema-acento-suave: #e98b91;
+  --tema-acento-claro: #f8d4d6;
   --tema-tinta: #2a1215;
   --tema-tinta-suave: #6b4846;
   --tema-neutro: #e8dcd8;
@@ -193,129 +146,9 @@ body {
     radial-gradient(50% 35% at 80% 90%, #f9d8c2, transparent 70%);
 }
 
-/* Portones de bienvenida: IntroGateComponent los desliza a los lados al cargar */
-.puerta-hoja {
-  transition: transform 3.2s cubic-bezier(0.65, 0, 0.35, 1);
-  will-change: transform;
-  transform: scaleY(1.6);
-  backface-visibility: hidden;
-}
-
-.puerta-hoja--izquierda {
-  transform-origin: left center;
-}
-
-.puerta-hoja--derecha {
-  transform-origin: right center;
-}
-
-.puerta-hoja--abierta-izquierda {
-  transform: scaleY(1.6) rotateY(-100deg);
-}
-
-.puerta-hoja--abierta-derecha {
-  transform: scaleY(1.6) rotateY(100deg);
-}
-
-/* Revelado del hero, sincronizado con IntroService/IntroGateComponent */
-.nombre-intro {
-  opacity: 0;
-  filter: blur(18px);
-  transition:
-    opacity 1.6s ease-out,
-    filter 1.6s ease-out;
-  transition-delay: 0.8s;
-}
-
-.nombre-intro--visible {
-  opacity: 1;
-  filter: blur(0);
-}
-
-.fecha-intro {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 1s ease-out,
-    transform 1s ease-out;
-  transition-delay: 1.6s;
-}
-
-.fecha-intro--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nombre-intro,
-  .fecha-intro {
-    opacity: 1;
-    filter: none;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* Mariposa decorativa: ButterflyComponent le asigna un nuevo punto al azar */
-.mariposa {
-  transition:
-    left var(--vuelo-duracion, 4s) ease-in-out,
-    top var(--vuelo-duracion, 4s) ease-in-out,
-    transform var(--vuelo-duracion, 4s) ease-in-out;
-  will-change: left, top, transform;
-}
-
-.mariposa-aleteo {
-  transform-origin: center;
-  animation: aleteo 0.7s ease-in-out infinite alternate;
-}
-
-@keyframes aleteo {
-  from {
-    transform: scaleX(1);
-  }
-  to {
-    transform: scaleX(0.7);
-  }
-}
-
-/* Revelado del saludo inicial del hero ("Tenemos el honor de invitarlos...") */
-.saludo-intro {
-  opacity: 0;
-  transform: translateY(-14px);
-  transition:
-    opacity 1s ease-out,
-    transform 1s ease-out;
-  transition-delay: 0.3s;
-}
-
-.saludo-intro--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Revelado de "Sweet 18", justo debajo del nombre */
-.subtitulo-intro {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 1s ease-out,
-    transform 1s ease-out;
-  transition-delay: 1.2s;
-}
-
-.subtitulo-intro--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .saludo-intro,
-  .subtitulo-intro {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+/* Tiñe de rojo las mariposas decorativas (el PNG original es gris/plateado) */
+.mariposa-roja {
+  filter: sepia(1) saturate(6) hue-rotate(-20deg) brightness(0.9);
 }
 
 /* Tarjeta tipo píldora: ícono + etiqueta + botón redondeado con dos líneas de texto */
@@ -328,18 +161,4 @@ body {
   background-color: color-mix(in srgb, white 70%, transparent);
   padding: 0.6rem 0.75rem;
   text-align: center;
-  transition:
-    border-color 0.3s ease-out,
-    box-shadow 0.3s ease-out,
-    transform 0.2s ease-out;
-}
-
-a.pildora:hover,
-button.pildora:hover {
-  border-color: var(--tema-acento);
-  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--tema-acento) 45%, transparent);
-}
-
-button.pildora:active {
-  transform: scale(0.97);
 }
